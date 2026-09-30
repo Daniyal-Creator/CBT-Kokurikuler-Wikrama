@@ -1,0 +1,24 @@
+/*
+ * Palet diambil dari benda kegiatan itu sendiri: kertas daur ulang, kaca
+ * botol hijau, dan warna jelantah. Semua warna datar; tidak ada gradasi.
+ */
+@theme {
+    --font-display: 'Big Shoulders Display', 'Arial Narrow', ui-sans-serif, sans-serif;
+    --font-stencil: 'Big Shoulders Stencil Display', 'Big Shoulders Display', 'Arial Narrow', sans-serif;
+
+    --color-kertas: oklch(0.958 0.014 88);
+    --color-kertas-tua: oklch(0.918 0.02 86);
+    --color-garis: oklch(0.83 0.024 86);
+    --color-tinta: oklch(0.25 0.03 158);
+    --color-tinta-lembut: oklch(0.43 0.028 155);
+
+    --color-botol: oklch(0.36 0.072 158);
+    --color-botol-tua: oklch(0.3 0.06 160);
+    --color-krem: oklch(0.955 0.028 95);
+    --color-krem-lembut: oklch(0.83 0.04 125);
+
+    --color-jelantah: oklch(0.8 0.145 78);
+    --color-jelantah-tua: oklch(0.5 0.115 62);
+
+    --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
+}

@@ -1,0 +1,151 @@
+@import '../../../../vendor/filament/filament/resources/css/theme.css';
+@import '../../token.css';
+
+@source '../../../../app/Filament/**/*';
+@source '../../../../resources/views/filament/**/*';
+@source '../../../../resources/views/components/**/*';
+
+/* Putih murni tidak dipakai; permukaan kartu ditarik sedikit ke warna kertas. */
+@theme {
+    --color-white: oklch(0.992 0.005 90);
+}
+
+@layer components {
+    /* ---------- Judul halaman: satu-satunya tempat huruf display di panel ---------- */
+
+    .fi-header-heading,
+    .fi-simple-header-heading {
+        font-family: var(--font-display);
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 0.005em;
+        line-height: 0.95;
+    }
+
+    .fi-header-heading {
+        @apply text-4xl sm:text-5xl;
+    }
+
+    .fi-simple-header-heading {
+        @apply text-5xl;
+    }
+
+    /* ---------- Sidebar: kaca botol hijau ---------- */
+
+    .fi-sidebar {
+        @apply bg-botol lg:bg-botol;
+    }
+
+    .fi-sidebar .fi-logo {
+        @apply text-krem;
+    }
+
+    .fi-sidebar-header-controls {
+        @apply after:border-krem/15;
+    }
+
+    .fi-sidebar .fi-icon-btn {
+        @apply text-krem-lembut hover:bg-krem/10 hover:text-krem focus-visible:bg-krem/10;
+    }
+
+    .fi-sidebar-group-label {
+        @apply font-bold text-krem-lembut;
+    }
+
+    .fi-sidebar-group-btn .fi-icon,
+    .fi-sidebar-group-dropdown-trigger-btn .fi-icon,
+    .fi-sidebar-item-btn > .fi-icon {
+        @apply text-krem-lembut;
+    }
+
+    .fi-sidebar-group.fi-active > .fi-sidebar-group-btn .fi-icon {
+        @apply text-jelantah;
+    }
+
+    .fi-sidebar-item-label {
+        @apply text-krem;
+    }
+
+    .fi-sidebar-item-grouped-border-part-not-first,
+    .fi-sidebar-item-grouped-border-part-not-last {
+        @apply bg-krem/25;
+    }
+
+    .fi-sidebar-item-grouped-border-part {
+        @apply bg-krem-lembut;
+    }
+
+    .fi-sidebar-item {
+        &.fi-sidebar-item-has-url > .fi-sidebar-item-btn {
+            @apply hover:bg-krem/10 focus-visible:bg-krem/10;
+        }
+
+        /* Item aktif memakai warna kertas, seolah menyambung ke halaman di kanannya. */
+        &.fi-active > .fi-sidebar-item-btn {
+            @apply bg-kertas hover:bg-kertas;
+
+            & > .fi-icon,
+            & > .fi-sidebar-item-label {
+                @apply text-botol;
+            }
+
+            & > .fi-sidebar-item-label {
+                @apply font-bold;
+            }
+
+            & > .fi-sidebar-item-grouped-border > .fi-sidebar-item-grouped-border-part {
+                @apply bg-botol;
+            }
+        }
+    }
+
+    .fi-sidebar-footer {
+        @apply border-krem/15;
+    }
+
+    .fi-sidebar .fi-user-menu-trigger {
+        @apply text-krem hover:bg-krem/10 focus-visible:bg-krem/10;
+
+        & .fi-icon,
+        &:hover .fi-icon,
+        &:focus-visible .fi-icon {
+            @apply text-krem-lembut;
+        }
+    }
+
+    .fi-sidebar-group-dropdown-trigger-btn,
+    .fi-sidebar-database-notifications-btn {
+        @apply hover:bg-krem/10 focus-visible:bg-krem/10;
+    }
+
+    .fi-sidebar-database-notifications-btn-label {
+        @apply text-krem;
+    }
+
+    /* ---------- Masuk dan daftar: layar terbelah seperti halaman publik ---------- */
+
+    .fi-simple-layout:has(> .kw-auth-panel) {
+        @apply items-stretch lg:flex-row;
+
+        & > .fi-simple-main-ctn {
+            @apply px-6 sm:px-10 lg:px-16;
+        }
+
+        & .fi-simple-main {
+            @apply my-12 max-w-md bg-transparent px-0 py-0 shadow-none ring-0 sm:rounded-none sm:px-0 lg:my-16;
+        }
+
+        & .fi-simple-header {
+            @apply items-start;
+        }
+
+        & .fi-simple-header-heading,
+        & .fi-simple-header-subheading {
+            @apply text-start;
+        }
+
+        & .fi-simple-header-subheading {
+            @apply text-base;
+        }
+    }
+}

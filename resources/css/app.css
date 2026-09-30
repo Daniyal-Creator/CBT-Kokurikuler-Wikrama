@@ -1,0 +1,54 @@
+@import 'tailwindcss';
+@import './token.css';
+
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../storage/framework/views/*.php';
+
+@theme {
+    --font-sans: 'Atkinson Hyperlegible Next', ui-sans-serif, system-ui, sans-serif;
+}
+
+@layer base {
+    /*
+     * Halaman publik ikut membesar di layar lebar agar tetap terbaca dari
+     * lobi (TV/proyektor), tanpa mengecil di bawah 16px di ponsel.
+     */
+    html.publik {
+        font-size: clamp(100%, 0.55vw + 0.6rem, 137.5%);
+    }
+}
+
+@layer components {
+    /* Isi batang dan gelas takar naik dari nol; hanya transform yang dianimasikan. */
+    .isi-batang {
+        transform: scaleX(var(--isi, 0));
+        transform-origin: left center;
+        animation: isi-batang 1.1s var(--ease-out-quart) both;
+        animation-delay: var(--tunda, 0ms);
+    }
+
+    .isi-takar {
+        transform-box: fill-box;
+        transform-origin: bottom center;
+        animation: isi-takar 1.6s var(--ease-out-quart) 150ms both;
+    }
+
+    @keyframes isi-batang {
+        from {
+            transform: scaleX(0);
+        }
+    }
+
+    @keyframes isi-takar {
+        from {
+            transform: scaleY(0);
+        }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        .isi-batang,
+        .isi-takar {
+            animation: none;
+        }
+    }
+}
